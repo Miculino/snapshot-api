@@ -48,7 +48,7 @@ app.post('/api/snapshot', async (req, res) => {
     // await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36')
     // await page.goto('http://localhost:3800', {waitUntil: 'networkidle2'})
     const buffer =   await page.screenshot({
-      path: 'screenshot_full.png',
+      // path: 'screenshot_full.png',
       fullPage: true
   })
   console.log(buffer);
