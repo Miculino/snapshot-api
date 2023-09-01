@@ -33,10 +33,17 @@ app.post('/api/snapshot', async (req, res) => {
   console.log(req.body)
 
     // Create a snapshot and send it back
-    const browser = await puppeteer.launch({ headless: 'new', defaultViewport: {
-      width: 1920,
-      height: 1080
-    }})
+    const browser = await puppeteer.launch({ 
+      headless: 'new', 
+      defaultViewport: {
+        width: 1920,
+        height: 1080
+      },
+      executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath()
+    })
     const page = await browser.newPage()
     await page.setContent(finalCode)
     // await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36')
